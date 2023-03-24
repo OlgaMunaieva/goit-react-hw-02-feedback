@@ -1,6 +1,5 @@
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   const [addGood, addNeutral, addBad] = options;
-  console.log(onLeaveFeedback);
   return (
     <div>
       <button onClick={addGood}>Good</button>

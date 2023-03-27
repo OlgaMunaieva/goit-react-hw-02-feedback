@@ -2,18 +2,23 @@ import { ContainerButtons, Button } from './Feedback.styled';
 import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const [addGood, addNeutral, addBad] = options;
   return (
     <ContainerButtons>
-      <Button onClick={addGood}>Good</Button>
+      {options.map(option => (
+        <Button key={option} onClick={() => onLeaveFeedback(option)}>
+          {option.replace(option.slice(0, 1), option.slice(0, 1).toUpperCase())}
+        </Button>
+      ))}
+      {/* <Button onClick={addGood}>Good</Button>
       <Button onClick={addNeutral}>Neutral</Button>
-      <Button onClick={addBad}>Bad</Button>
+      <Button onClick={addBad}>Bad</Button> */}
     </ContainerButtons>
   );
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.func.isRequired).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;
